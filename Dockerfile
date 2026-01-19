@@ -1,15 +1,27 @@
-FROM python:3.12-slim-bookworm
+FROM python:3.12-slim
 
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
+
+# Install system dependencies required for VS Code / Antigravity server
+# wget is strictly required. git and curl are highly recommended for dev.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget \
+    curl \
+    git \
+    procps \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
 # Copy dependency definitions
 COPY pyproject.toml uv.lock ./
 
-# Install dependencies system-wide
-RUN uv pip install --system --require-hashes -r pyproject.toml
+# Install dependencies using the lockfile
+RUN uv sync --frozen
+
+# Add the virtual environment to the PATH
+ENV PATH="/app/.venv/bin:$PATH"
 
 # Copy source code and data configurations
 COPY src/ ./src/

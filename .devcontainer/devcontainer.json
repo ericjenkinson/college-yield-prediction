@@ -7,7 +7,7 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.defaultInterpreterPath": "/app/.venv/bin/python",
         "python.terminal.activateEnvironment": true
       },
       "extensions": [
@@ -22,5 +22,5 @@
   "workspaceFolder": "/app",
   "overrideCommand": true,
   "shutdownAction": "stopContainer",
-  "postCreateCommand": "uv pip install --system -r pyproject.toml"
+  "postCreateCommand": "uv sync --frozen"
 }
