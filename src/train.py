@@ -53,7 +53,7 @@ def main():
     )
     df_sc.rename(columns=use_cols_scorecard, inplace=True)
 
-    df_ipeds = pd.read_csv(os.path.join(DATA_DIR, "ADM2024.csv"))
+    df_ipeds = pd.read_csv(os.path.join(DATA_DIR, "adm2024.csv"))
     df_ipeds = df_ipeds[['UNITID', 'ADMSSN', 'ENRLT']]
 
     # Merge
