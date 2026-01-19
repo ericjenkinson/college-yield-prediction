@@ -87,13 +87,28 @@ You can run the entire project as a container. This handles dependencies, traini
 3. **Make a Prediction**:
    Once the container is running, use the curl command below.
 
-### 5. Make a Prediction
+### 5. Make a Prediction and Parameter Explanation
+
 You can test the API using `curl`:
 ```bash
 curl -X POST -H "Content-Type: application/json" \
      -d '{"school_name": "Test University", "state": "CA", "control": 1, "tuition_in_state": 7000, "sat_avg": 1200, "pell_grant_rate": 0.45, "faculty_salary": 9000}' \
      http://localhost:5000/predict
 ```
+
+#### Input Parameters Explained
+These features were selected based on our EDA as they showed the strongest correlation with Yield.
+
+| Parameter | Description | Why it matters? |
+|-----------|-------------|-----------------|
+| `school_name` | Name of the institution. | Used for identification (not a feature for the model). |
+| `state` | Two-letter state code (e.g., "CA"). | Location affects yield; in-state students are more likely to attend public schools. |
+| `control` | Ownership type (`1`: Public, `2`: Private). | Public schools often have higher yields due to lower costs for in-state students. |
+| `tuition_in_state` | In-state tuition cost ($). | Price is a major decision factor. High tuition can lower yield unless offset by prestige/aid. |
+| `sat_avg` | Average SAT score of admitted students. | Proxy for selectivity/prestige. Highly selective schools often have higher yields. |
+| `pell_grant_rate` | Percentage of students receiving Pell Grants. | Indicates the socioeconomic status of the student body. |
+| `faculty_salary` | Average monthly faculty salary ($). | Correlates with university resources and quality of education. |
+
 Expected Output:
 ```json
 {
