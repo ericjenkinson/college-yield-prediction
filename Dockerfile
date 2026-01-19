@@ -24,13 +24,20 @@ RUN uv sync --frozen
 ENV PATH="/app/.venv/bin:$PATH"
 
 # Copy source code and data configurations
+# Copy source code and data
 COPY src/ ./src/
-COPY data/data.yaml ./data/
+COPY data/ ./data/
 
 # Create models directory
 RUN mkdir -p models
 
-EXPOSE 9696
+# Train the model during build so it is ready for serving
+RUN python src/train.py
+
+EXPOSE 5000
 
 WORKDIR /app/src
-ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:9696", "predict:app"]
+# Using python direct execution for simplicity as requested, or gunicorn. 
+# Since predict.py has app.run, python src/predict.py works, but gunicorn is better for prod.
+# Let's use gunicorn binding to 5000.
+ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:5000", "predict:app"]
