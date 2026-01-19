@@ -1,0 +1,19 @@
+[project]
+name = "college-yield-predictor"
+version = "0.1.0"
+description = "Predicting university yield rates using Deep Learning"
+requires-python = ">=3.12"
+dependencies = [
+    "flask",
+    "gunicorn",
+    "numpy",
+    "pandas",
+    "pyyaml",
+    "scikit-learn",
+    "tensorflow",
+    "ipykernel",
+    "matplotlib",
+    "seaborn"
+]
+
+[tool.uv]

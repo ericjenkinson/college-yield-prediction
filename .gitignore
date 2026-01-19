@@ -1,0 +1,50 @@
+# --- Python & Runtime ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# --- Virtual Environments (managed by uv) ---
+# uv creates the .venv directory by default
+.venv/
+venv/
+env/
+
+# --- Dependency Management ---
+# We generally commit pyproject.toml and uv.lock.
+# However, local configuration files should be ignored.
+uv.toml
+
+# --- Data Files ---
+# Ignore large raw CSV/Excel files to keep the repo light
+#data/*.csv
+data/*.xlsx
+data/*.zip
+data/*.gz
+
+# Exception: Keep the semantic mapping file
+!data/data.yaml
+
+# --- Trained Models ---
+# Deep Learning models and pickled scalers are usually too large for Git
+models/*.keras
+models/*.h5
+models/*.pkl
+models/*.json
+models/*.joblib
+
+# --- Jupyter Notebooks ---
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+# Optional: Ignore execution count/output if you want clean diffs (requires configuration)
+# *.ipynb
+
+# --- IDE & OS ---
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# --- Environment Variables ---
+.env
+.flaskenv
