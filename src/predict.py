@@ -89,7 +89,7 @@ if __name__ == '__main__':
         "faculty_salary": 9000
     }
     """)
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=50001)
     
 """
 SAMPLE JSON for POST /predict:

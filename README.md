@@ -68,7 +68,7 @@ To start the Flask prediction service:
 ```bash
 python src/predict.py
 ```
-The service will start on `http://localhost:5000`.
+The service will start on `http://localhost:50001`.
 
 ### 4. Docker (Recommended)
 You can run the entire project as a container. This handles dependencies, training, and serving automatically.
@@ -81,7 +81,7 @@ You can run the entire project as a container. This handles dependencies, traini
 
 2. **Run the Container**:
    ```bash
-   docker run -p 5000:5000 yield-predictor
+   docker run -p 50001:50001 yield-predictor
    ```
 
 3. **Make a Prediction**:
@@ -93,7 +93,7 @@ You can test the API using `curl`:
 ```bash
 curl -X POST -H "Content-Type: application/json" \
      -d '{"school_name": "Test University", "state": "CA", "control": 1, "tuition_in_state": 7000, "sat_avg": 1200, "pell_grant_rate": 0.45, "faculty_salary": 9000}' \
-     http://localhost:5000/predict
+     http://localhost:50001/predict
 ```
 
 #### Input Parameters Explained
