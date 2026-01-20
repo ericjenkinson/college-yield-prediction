@@ -13,18 +13,22 @@ We performed comprehensive EDA in `notebooks/notebook.ipynb` to understand the f
 
 ### 1. Yield Distribution
 The distribution of yield rates across universities is visualized to detect skewness and outliers.
+![Yield Distribution](images/distributionYieldRates.png)
 - **Insight**: Most universities have a moderate yield, but some highly competitive or specialized institutions have very high yield rates.
 
 ### 2. Feature Correlation Matrix
 A heatmap showing the correlation between numerical features (Tuition, SAT Avg, Faculty Salary, etc.) and Yield.
+![Feature Correlation Matrix](images/correlationMatrix.png)
 - **Insight**: We look for strong positive or negative correlations. For example, `tuition_in_state` and `sat_avg` often show significant correlation with Yield, indicating that cost and prestige are major decision factors for students.
 
 ### 3. Feature Importance (Random Forest)
 We used a Random Forest Regressor to determine which features contribute most to the prediction.
+![Feature Importance](images/top10FeatureImportance.png)
 - **Insight**: The analysis reveals that features like **Tuition**, **State**, and **SAT Scores** are often the strongest predictors of whether an admitted student will enroll.
 
 ### 4. Scatter Plots
 Visualizations of key relationships, such as **SAT Average vs. Yield**.
+![Scatter Plot](images/SATAverageVsYield.png)
 - **Insight**: These plots help identify trends, such as whether higher-scoring schools tend to have higher or lower yield rates compared to their peers.
 
 ## Model Architecture
