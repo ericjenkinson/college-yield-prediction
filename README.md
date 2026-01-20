@@ -124,3 +124,14 @@ Expected Output:
   ]
 }
 ```
+
+### 6. Accessing the Cloud Deployment
+The model is deployed on Google Cloud Run. You can access it directly via the following URL:
+**`https://yield-service-495822733746.us-central1.run.app`**
+
+Test the deployment using `curl`:
+```bash
+curl -X POST -H "Content-Type: application/json" \
+     -d '{"school_name": "Test University", "state": "CA", "control": 1, "tuition_in_state": 7000, "sat_avg": 1200, "pell_grant_rate": 0.45, "faculty_salary": 9000}' \
+     https://yield-service-495822733746.us-central1.run.app/predict
+```
